@@ -24,6 +24,36 @@ class MaiorEMenorTest extends TestCase
         self::assertEquals('Jogo de Pratos',$maiorMenor->getMenor()->getNome());
     }
 
+    public function testEmOrdemDecrescente()
+    {
+        $carrinho = new CarrinhoDeCompras();
+
+        $carrinho->adiciona(new Produto('Geladeira',950.00));
+        $carrinho->adiciona(new Produto('Liquidificador',450.00));
+        $carrinho->adiciona(new Produto('Jogo de Pratos',70.00));
+
+        $maiorMenor = new MaiorEMenor();
+        $maiorMenor->encontra($carrinho);
+
+        self::assertEquals('Geladeira',$maiorMenor->getMaior()->getNome());
+        self::assertEquals('Jogo de Pratos',$maiorMenor->getMenor()->getNome());
+    }
+
+    public function testEmOrdemAleatoria()
+    {
+        $carrinho = new CarrinhoDeCompras();
+
+        $carrinho->adiciona(new Produto('Geladeira',950.00));
+        $carrinho->adiciona(new Produto('Jogo de Pratos',70.00));
+        $carrinho->adiciona(new Produto('Liquidificador',450.00));
+
+        $maiorMenor = new MaiorEMenor();
+        $maiorMenor->encontra($carrinho);
+
+        self::assertEquals('Geladeira',$maiorMenor->getMaior()->getNome());
+        self::assertEquals('Jogo de Pratos',$maiorMenor->getMenor()->getNome());
+    }
+
     public function testApenasUmProduto()
     {
         $carrinho = new CarrinhoDeCompras();
