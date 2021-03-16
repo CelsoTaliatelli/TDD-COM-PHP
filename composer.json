@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "CDC\\Loja\\": "src/CDC/Loja/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "9"
+  }
+}
