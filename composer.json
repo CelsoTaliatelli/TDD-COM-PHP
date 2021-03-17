@@ -1,7 +1,8 @@
 {
   "autoload": {
     "psr-4": {
-      "CDC\\Loja\\": "src/CDC/Loja/"
+      "CDC\\Loja\\": "src/CDC/Loja/",
+      "CDC\\Exemplos\\": "src/CDC/Exemplos"
     }
   },
   "require-dev": {
