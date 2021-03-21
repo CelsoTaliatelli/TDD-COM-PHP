@@ -2,10 +2,36 @@
 
 require_once __DIR__.'/vendor/autoload.php';
 
-$numero = "II";
+$tabela = array(
+    "I" => 1,
+    "V" => 5,
+    "X" => 10,
+    "L" => 50,
+    "C" => 100,
+    "D" => 500,
+    "M" => 1000
+);
 
-
+$numero ="IX";
+$acumulador = 0;
 for ($i = 0; $i < strlen($numero);$i++){
-    echo $numero[$i] .PHP_EOL;
+    $numCorrente = $numero[$i];
+    if($i+1 < strlen($numero)){
+        $numDireita = $numero[$i+1];
+    }
+ 
+    
+    if(array_key_exists($numCorrente,$tabela)){
+
+       if($tabela[$numDireita] > $tabela[$numCorrente]){
+            $acumulador += ($tabela[$numDireita] - $tabela[$numCorrente]);
+            $i++;
+       }else{
+            $acumulador += $tabela[$numCorrente];
+       }
+            
+    }
 }
 
+
+echo $acumulador .PHP_EOL;

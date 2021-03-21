@@ -11,6 +11,7 @@ class ConversorDeNumeroRomano
     protected $tabela = array(
         "I" => 1,
         "V" => 5,
+        "X" => 10,
         "L" => 50,
         "C" => 100,
         "D" => 500,
@@ -22,8 +23,17 @@ class ConversorDeNumeroRomano
         $acumulador = 0;
         for ($i = 0; $i < strlen($numero);$i++){
             $numCorrente = $numero[$i];
+            $numDireita = 0;
+            if($i+1 < strlen($numero)){
+                $numDireita = $numero[$i+1];
+            }
             if(array_key_exists($numCorrente,$this->tabela)){
-                $acumulador += $this->tabela[$numCorrente];
+                if($this->tabela[$numDireita] > $this->tabela[$numCorrente]){
+                    $acumulador += ($this->tabela[$numDireita] - $this->tabela[$numCorrente]);
+                }else{
+                    $acumulador += $this->tabela[$numCorrente];
+                }
+                
             }
         }
 
