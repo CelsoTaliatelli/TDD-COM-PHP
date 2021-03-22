@@ -12,26 +12,29 @@ $tabela = array(
     "M" => 1000
 );
 
-$numero ="IX";
+$numero ="XXIV";
 $acumulador = 0;
 for ($i = 0; $i < strlen($numero);$i++){
     $numCorrente = $numero[$i];
+    $numDireita = "";
     if($i+1 < strlen($numero)){
         $numDireita = $numero[$i+1];
     }
- 
+
     
     if(array_key_exists($numCorrente,$tabela)){
 
-       if($tabela[$numDireita] > $tabela[$numCorrente]){
+        if(isset($tabela[$numDireita]) && $tabela[$numDireita] > $tabela[$numCorrente]){
+            echo 'Ok';
             $acumulador += ($tabela[$numDireita] - $tabela[$numCorrente]);
             $i++;
-       }else{
+        }else{
             $acumulador += $tabela[$numCorrente];
        }
-            
+
     }
 }
 
-
 echo $acumulador .PHP_EOL;
+
+//echo $acumulador .PHP_EOL;

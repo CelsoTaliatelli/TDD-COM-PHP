@@ -23,13 +23,14 @@ class ConversorDeNumeroRomano
         $acumulador = 0;
         for ($i = 0; $i < strlen($numero);$i++){
             $numCorrente = $numero[$i];
-            $numDireita = 0;
+            $numDireita = "";
             if($i+1 < strlen($numero)){
                 $numDireita = $numero[$i+1];
             }
             if(array_key_exists($numCorrente,$this->tabela)){
-                if($this->tabela[$numDireita] > $this->tabela[$numCorrente]){
+                if(isset($this->tabela[$numDireita]) && $this->tabela[$numDireita] > $this->tabela[$numCorrente]){
                     $acumulador += ($this->tabela[$numDireita] - $this->tabela[$numCorrente]);
+                    $i++;
                 }else{
                     $acumulador += $this->tabela[$numCorrente];
                 }
